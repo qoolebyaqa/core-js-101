@@ -4,8 +4,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String   *
  *                                                                                           *
  ******************************************************************************************* */
-
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -18,10 +16,12 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(a, b) {
+  if (typeof (a) === 'string' && typeof (b) === 'string') {
+    return a + b;
+  }
+  throw new Error('Arguments must be type String');
 }
-
 
 /**
  * Returns the length of given string.
@@ -34,8 +34,11 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof (value) === 'string') {
+    return value.length;
+  }
+  throw new Error('Argument must be type String');
 }
 
 /**
@@ -51,8 +54,11 @@ function getStringLength(/* value */) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  if (typeof (firstName) === 'string' && typeof (lastName) === 'string') {
+    return `Hello, ${firstName} ${lastName}!`;
+  }
+  throw new Error('Arguments must be type String');
 }
 
 /**
@@ -65,10 +71,12 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(str) {
+  if (typeof (str) === 'string') {
+    return str.slice(str.indexOf(',') + 2, str.length - 1);
+  }
+  throw new Error('Argument must be type String');
 }
-
 
 /**
  * Returns a first char of the given string.
@@ -80,8 +88,11 @@ function extractNameFromTemplate(/* value */) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(str) {
+  if (typeof (str) === 'string') {
+    return str[0];
+  }
+  throw new Error('Argument must be type String');
 }
 
 /**
@@ -95,9 +106,18 @@ function getFirstChar(/* value */) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
+function removeLeadingAndTrailingWhitespaces(/* str */) {
   throw new Error('Not implemented');
 }
+
+
+/* {
+  if (typeof (str) === 'string') {
+    if (str[str.indexOf(' ') + 1] !== ' ' && str[str.indexOf(' ') - 1] !== ' ');
+
+  }
+  throw new Error('Argument must be type String');
+} */
 
 /**
  * Returns a string that repeated the specified number of times.
@@ -110,8 +130,15 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  if (typeof (value) === 'string' && typeof (count) === 'number') {
+    let str = value;
+    while (value.length * count > str.length) {
+      str += value;
+    }
+    return str;
+  }
+  throw new Error('Arguments must be type String');
 }
 
 /**
@@ -126,8 +153,11 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  if (typeof (str) === 'string' && typeof (value) === 'string') {
+    return str.replace(value, '');
+  }
+  throw new Error('Arguments must be type String');
 }
 
 /**
@@ -141,8 +171,11 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  if (typeof (str) === 'string') {
+    return str.replaceAll('<', '').replaceAll('>', '');
+  }
+  throw new Error('Argument must be type String');
 }
 
 
@@ -156,8 +189,11 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  if (typeof (str) === 'string') {
+    return str.toUpperCase();
+  }
+  throw new Error('Argument must be type String');
 }
 
 /**
@@ -175,8 +211,11 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  if (typeof (str) === 'string') {
+    return str.split(';');
+  }
+  throw new Error('Argument must be type String');
 }
 
 /**
