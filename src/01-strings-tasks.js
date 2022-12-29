@@ -106,8 +106,8 @@ function getFirstChar(str) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* str */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(str) {
+  return str.trim();
 }
 
 
@@ -262,8 +262,27 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const start4lower = 97;
+  const start4upper = 65;
+  let newStr = '';
+  for (let i = 0; i < str.length;) {
+    if (str[i].charCodeAt() < 65 || str[i].charCodeAt > 122) {
+      newStr += str[i];
+    } else if (str[i].charCodeAt() < start4lower) {
+      if (str[i].charCodeAt() - start4upper < 13) {
+        newStr += String.fromCharCode(str[i].charCodeAt() + 13);
+      } else {
+        newStr += String.fromCharCode(str[i].charCodeAt() - 13);
+      }
+    } else if (str[i].charCodeAt() - start4lower < 13) {
+      newStr += String.fromCharCode(str[i].charCodeAt() + 13);
+    } else {
+      newStr += String.fromCharCode(str[i].charCodeAt() - 13);
+    }
+    i += 1;
+  }
+  return newStr;
 }
 
 /**
@@ -279,8 +298,14 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (value instanceof String) {
+    return true;
+  }
+  if (typeof (value) === 'string') {
+    return true;
+  }
+  return false;
 }
 
 
@@ -308,8 +333,12 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const strArr = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  return strArr.indexOf(value);
 }
 
 
