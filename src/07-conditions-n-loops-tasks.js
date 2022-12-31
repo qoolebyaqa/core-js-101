@@ -190,8 +190,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const str1 = str.replaceAll(' ', '');
+  for (let i = 0; i < str1.length; i += 1) {
+    if (!str1.slice(i + 1).includes(str1[i]) && !str1.slice(0, i).includes(str1[i])) {
+      return str1[i];
+    }
+  }
+  return null;
 }
 
 
@@ -217,8 +223,10 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const leftbracket = (isStartIncluded) ? '[' : '(';
+  const rightbracket = (isEndIncluded) ? ']' : ')';
+  return (b < a) ? `${leftbracket}${b}, ${a}${rightbracket}` : `${leftbracket}${a}, ${b}${rightbracket}`;
 }
 
 
@@ -234,8 +242,12 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  let str1 = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    str1 += str[i];
+  }
+  return str1;
 }
 
 
@@ -251,8 +263,13 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const str = num.toString();
+  let str1 = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    str1 += str[i];
+  }
+  return Number(str1);
 }
 
 
